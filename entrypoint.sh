@@ -15,6 +15,6 @@ if [ "$AUTO_UPDATE" = "true" ]; then
   fi
 fi
 
-hermes dashboard --host 127.0.0.1 --port 9119 --no-open &
+hermes dashboard --host 127.0.0.1 --port 9119 --no-open --skip-build &
 
 exec python /auth_proxy.py
