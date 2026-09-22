@@ -17,6 +17,8 @@ RUN uv venv venv --python 3.11 \
 
 ENV PATH="/opt/hermes-agent/venv/bin:$PATH"
 
+RUN cd /opt/hermes-agent && npm install --workspace web && npm run build -w web
+
 RUN mkdir -p /root/.hermes/{cron,sessions,logs,memories,skills,pairing,hooks,image_cache,audio_cache} \
     && cp cli-config.yaml.example /root/.hermes/config.yaml \
     && touch /root/.hermes/.env
