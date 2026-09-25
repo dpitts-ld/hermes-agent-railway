@@ -15,6 +15,7 @@ if [ "$AUTO_UPDATE" = "true" ]; then
   fi
 fi
 
+cd /opt/hermes-agent && VIRTUAL_ENV=/opt/hermes-agent/venv uv pip install -e ".[all]" --quiet
 hermes dashboard --host 127.0.0.1 --port 9119 --no-open --skip-build &
 
 exec python /auth_proxy.py
