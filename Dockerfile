@@ -11,6 +11,8 @@ ENV PATH="/root/.local/bin:$PATH"
 
 RUN git clone --recurse-submodules https://github.com/NousResearch/hermes-agent.git /opt/hermes-agent
 
+RUN cd /opt/hermes-agent && git checkout c29114ea9acc209426c58d4f040e25130da21be9 && git submodule update --init --recursive
+
 WORKDIR /opt/hermes-agent
 RUN uv venv venv --python 3.14 \
     && VIRTUAL_ENV=/opt/hermes-agent/venv uv pip install -e ".[all]"
